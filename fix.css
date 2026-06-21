@@ -1,0 +1,9 @@
+/* Keeps the completed-game dialog hidden whenever JavaScript sets hidden=true. */
+.result-modal[hidden] {
+  display: none;
+}
+
+/* 答题反馈仅在用户选择选项后显示。 */
+#feedback[hidden] {
+  display: none;
+}

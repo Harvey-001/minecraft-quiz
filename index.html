@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#101d18" />
+    <title>方块知识局 · 网易版我的世界问答</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Press+Start+2P&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="fix.css" />
+  </head>
+  <body>
+    <div class="sky-glow"></div>
+    <main class="app-shell">
+      <header class="hero">
+        <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        <div>
+          <p class="eyebrow">MINECRAFT · NETEASE EDITION</p>
+          <h1>方块知识局</h1>
+          <p class="subtitle">网易版《我的世界》知识问答</p>
+        </div>
+        <button class="share-button" id="shareButton" type="button" aria-label="分享此问答">
+          <span>↗</span> 分享
+        </button>
+      </header>
+
+      <section class="dashboard" aria-label="答题进度">
+        <div class="stat"><span>当前关卡</span><strong id="questionNumber">01</strong><small>/ <span id="questionTotal">10</span></small></div>
+        <div class="progress-wrap">
+          <div class="progress-label"><span>探索进度</span><span id="progressText">0%</span></div>
+          <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+        </div>
+        <div class="score"><span>获得绿宝石</span><strong><i>✦</i> <span id="score">0</span></strong></div>
+      </section>
+
+      <section class="quiz-card" id="quizCard" aria-live="polite">
+        <div class="card-topline"><span class="difficulty" id="difficulty">入门</span><span class="category" id="category">基础生存</span></div>
+        <p class="question-label">本轮问题</p>
+        <h2 id="question">正在装载你的世界……</h2>
+        <div class="answers" id="answers"></div>
+        <div class="feedback" id="feedback" hidden>
+          <div class="feedback-icon" id="feedbackIcon">✓</div>
+          <div><strong id="feedbackTitle">答对了！</strong><p id="feedbackText"></p></div>
+          <button id="nextButton" type="button">下一题 <span>→</span></button>
+        </div>
+      </section>
+
+      <aside class="tip"><span class="tip-icon">✦</span><p><strong>小贴士：</strong>每答对一题获得 10 颗绿宝石。连续答对，保持探索者的节奏！</p></aside>
+    </main>
+
+    <div class="toast" id="toast" role="status"></div>
+    <div class="result-modal" id="resultModal" aria-modal="true" role="dialog" aria-labelledby="resultTitle" hidden>
+      <div class="modal-panel">
+        <div class="trophy">✦</div>
+        <p class="eyebrow">探索完成</p>
+        <h2 id="resultTitle">你的冒险记录</h2>
+        <p class="result-score"><span id="finalScore">0</span> / <span id="finalTotal">100</span> 绿宝石</p>
+        <p id="resultMessage"></p>
+        <div class="modal-actions"><button class="secondary" id="modalShare" type="button">分享挑战</button><button id="restartButton" type="button">再玩一次</button></div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
