@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#101d18" />
+    <title>方块远征 · 网易版我的世界挑战</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Press+Start+2P&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="fix.css" />
+    <link rel="stylesheet" href="features.css" />
+    <link rel="stylesheet" href="game.css" />
+    <link rel="stylesheet" href="music.css" />
+    <link rel="stylesheet" href="gameplay.css" />
+    <link rel="stylesheet" href="accessibility.css" />
+  </head>
+  <body>
+    <div class="sky-glow"></div>
+    <section class="mode-menu" id="modeMenu">
+      <div class="mode-menu__inner">
+        <div class="mode-menu__brand"><div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></div><div><p class="eyebrow">MINECRAFT · BLOCKWORLD EXPEDITION</p><h1>方块远征</h1></div></div>
+        <p class="mode-menu__lead">选择你的冒险方式</p>
+        <div class="mode-cards">
+          <button class="mode-card quiz-mode" id="openQuiz" type="button"><span class="mode-card__icon">?</span><span class="mode-card__title">知识问答</span><span class="mode-card__text">挑战技术跑酷与方块机制题库</span><span class="mode-card__go">开始答题 →</span></button>
+          <button class="mode-card game-mode" id="openGame" type="button"><span class="mode-card__icon">⚔</span><span class="mode-card__title">末地远征</span><span class="mode-card__text">从出生点出发，跨越六个世界击败末影龙</span><span class="mode-card__go">开始冒险 →</span></button>
+        </div>
+        <p class="mode-menu__hint">问答成绩仅保存在本机浏览器 · 游戏使用键盘方向键或 A / D 和空格键</p>
+      </div>
+    </section>
+    <main class="app-shell" id="quizApp" hidden>
+      <header class="hero">
+        <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        <div>
+          <p class="eyebrow">MINECRAFT · NETEASE EDITION</p>
+          <h1>方块远征</h1>
+          <p class="subtitle">网易版《我的世界》知识问答</p>
+        </div>
+        <button class="back-button" id="backFromQuiz" type="button">← 模式选择</button><button class="share-button" id="shareButton" type="button" aria-label="分享此问答">
+          <span>↗</span> 分享
+        </button>
+      </header>
+
+      <section class="dashboard" aria-label="答题进度">
+        <div class="stat"><span>当前关卡</span><strong id="questionNumber">01</strong><small>/ <span id="questionTotal">10</span></small></div>
+        <div class="progress-wrap">
+          <div class="progress-label"><span>探索进度</span><span id="progressText">0%</span></div>
+          <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+        </div>
+        <div class="score"><span>获得绿宝石</span><strong><i>✦</i> <span id="score">0</span></strong></div>
+      </section>
+
+      <section class="quiz-card" id="quizCard" aria-live="polite">
+        <div class="card-topline"><span class="difficulty" id="difficulty">入门</span><span class="category" id="category">基础生存</span></div>
+        <p class="question-label">本轮问题</p>
+        <h2 id="question">正在装载你的世界……</h2>
+        <div class="answers" id="answers"></div>
+        <div class="feedback" id="feedback" hidden>
+          <div class="feedback-icon" id="feedbackIcon">✓</div>
+          <div><strong id="feedbackTitle">答对了！</strong><p id="feedbackText"></p></div>
+          <button id="nextButton" type="button">下一题 <span>→</span></button>
+        </div>
+      </section>
+
+      <aside class="tip"><span class="tip-icon">✦</span><p><strong>小贴士：</strong>每答对一题获得 10 颗绿宝石。连续答对，保持探索者的节奏！</p></aside>
+
+      <section class="history-panel" aria-labelledby="historyTitle">
+        <div class="history-heading"><div><p class="question-label">本机记录</p><h2 id="historyTitle">历史成绩</h2></div><button id="clearHistory" type="button">清空记录</button></div>
+        <p class="history-empty" id="historyEmpty">还没有完成记录。完成一轮挑战后，成绩会保存在这台设备的浏览器中。</p>
+        <ol class="history-list" id="historyList"></ol>
+      </section>
+    </main>
+
+    <section class="game-app" id="gameApp" hidden>
+      <header class="game-header"><button class="back-button" id="backFromGame" type="button">← 模式选择</button><div><p class="eyebrow">BLOCKWORLD PLATFORM ADVENTURE</p><h2>末地远征</h2></div><button class="music-toggle" id="musicToggle" type="button" aria-pressed="true">♫ 音乐：开</button><button class="game-restart" id="gameRestart" type="button">↻ 重开本关</button></header>
+      <div class="game-shell"><canvas id="adventureCanvas" width="960" height="540" aria-label="末地远征横版闯关游戏"></canvas><div class="touch-controls" id="touchControls" aria-label="触屏游戏控制"><div class="touch-move"><button data-key="ArrowLeft" type="button" aria-label="向左移动">◀</button><button data-key="ArrowRight" type="button" aria-label="向右移动">▶</button></div><div class="touch-actions"><button data-key="Space" type="button" aria-label="跳跃">跳</button><button class="touch-fire" id="touchFire" type="button" aria-label="开火" hidden>火</button></div></div><div class="game-help" id="gameHelp"><span>移动：A / D 或 ← / →</span><span>跳跃：空格 / W / ↑（可按住连跳）</span><span>战斗：踩怪；末影龙按 F 射击</span><span>目标：收集物资，到达传送门</span></div></div>
+      <section class="game-records"><div><p class="question-label">本机远征日志</p><h2>闯关战绩</h2></div><p id="gameRecordEmpty">尚未结束任何一局远征。</p><ol id="gameRecordList"></ol></section>
+    </section>
+
+    <div class="toast" id="toast" role="status"></div>
+    <div class="result-modal" id="resultModal" aria-modal="true" role="dialog" aria-labelledby="resultTitle" hidden>
+      <div class="modal-panel">
+        <div class="trophy">✦</div>
+        <p class="eyebrow">探索完成</p>
+        <h2 id="resultTitle">你的冒险记录</h2>
+        <p class="result-score"><span id="finalScore">0</span> / <span id="finalTotal">100</span> 绿宝石</p>
+        <p id="resultMessage"></p>
+        <div class="modal-actions"><button class="secondary" id="modalShare" type="button">分享挑战</button><button id="restartButton" type="button">再玩一次</button></div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+    <script src="game.js"></script>
+  </body>
+</html>
